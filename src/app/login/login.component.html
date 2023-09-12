@@ -1,0 +1,16 @@
+
+<form class="text-center border border-light p-5">
+    <p class="h5 mb-4">Login</p>
+    <div class="row justify-content-center">
+        <div class="col-md-3 mb-4">
+          <input type="email" class="form-control form-control-lg mb-4" name="email" placeholder="E-mail" required>
+          <input type="password" class="form-control form-control-lg mb-4" name="password" placeholder="Password" required>
+          <button class="btn btn-success" type="submit">Login</button>
+        </div>
+      </div>
+    <p>Not a member?
+        <a routerLink="/signup" routerLinkActive="active">Register</a>
+    </p>
+  </form>
+
+<router-outlet></router-outlet>
