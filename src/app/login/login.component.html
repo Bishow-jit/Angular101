@@ -1,11 +1,18 @@
+<div *ngIf="alert" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Ooops</strong> Wrong Credential!!!
+  <button type="button" (click)="closeAlert()" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
 
 <form class="text-center border border-light p-5">
     <p class="h5 mb-4">Login</p>
     <div class="row justify-content-center">
         <div class="col-md-3 mb-4">
-          <input type="email" class="form-control form-control-lg mb-4" name="email" placeholder="E-mail" required>
-          <input type="password" class="form-control form-control-lg mb-4" name="password" placeholder="Password" required>
-          <button class="btn btn-success" type="submit">Login</button>
+          <input type="email" class="form-control form-control-lg mb-4" name="email" [(ngModel)]="loginObj.email" placeholder="E-mail" required>
+          <input type="password" class="form-control form-control-lg mb-4" name="password" [(ngModel)]="loginObj.password" placeholder="Password" required>
+          <button class="btn btn-success" type="submit" (click)="onLogin()">Login</button>
         </div>
       </div>
     <p>Not a member?
