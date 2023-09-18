@@ -4,32 +4,26 @@
 
 <div class="container">
     <h2 class="text-center">My Dashboard</h2>            
-    <table class="table table-striped p-5">
+    <table class="table table-striped justify-content-center m-lg-3" >
       <thead>
         <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Email</th>
+          <th scope="col">ID</th>
+          <th scope="col">NAME</th>
+          <th scope="col">AGE</th>
+          <th scope="col">COUNTRY</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
-        </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@example.com</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@example.com</td>
+        <tr *ngFor="let e of employees | slice: (page-1) * pageSize : (page -1) * pageSize + pageSize">
+          <td>{{e.id}}</td>
+          <td>{{e.name}}</td>
+          <td>{{e.age}}</td>
+          <td>{{e.country}}</td>
         </tr>
       </tbody>
     </table>
+    <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="employees.length"></ngb-pagination>
+
   </div>
 
   
