@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 
 @Component({
@@ -18,11 +19,9 @@ export class LoginComponent {
 
   alert:boolean = false; 
 
-  constructor(private router1:ActivatedRoute,private router2:Router){
+  constructor(private router1:ActivatedRoute,private router2:Router,private loginService: LoginService){
 
   }
-
-
 
   ngOnInit(): void {
    const localData = localStorage.getItem('users');
@@ -36,9 +35,11 @@ export class LoginComponent {
     console.log(this.registerUser);
    const isUserExist = this.registerUser.find(u => u.email == this.loginObj.email && u.password == this.loginObj.password);
    if(isUserExist){
+    this.loginService.setIsUserExist(true);
     this.router2.navigate(['/dashboard']);
    }
    else{
+    this.loginService.setIsUserExist(false);
     this.alert=true;
    }
   }
